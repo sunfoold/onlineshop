@@ -17,3 +17,6 @@ phases:
 artifacts:
   files:
     - target/onlineshop-1.jar
+cache:
+  paths:
+    - '/root/.m2/**/*'
