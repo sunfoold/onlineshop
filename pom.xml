@@ -57,7 +57,7 @@
 				<version>3.1.1</version>
 				<configuration>
 					<to>
-						<image>${env.IMAGE_REPO_NAME}:${env.IMAGE_TAG}</image>
+						<image>${env.IMAGE_REPO_NAME}</image>
 					</to>
 				</configuration>
 			</plugin>
