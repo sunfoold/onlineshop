@@ -11,17 +11,16 @@ phases:
   build:
     commands:
       - echo Build started on `date`
-#      - mvn compile com.google.cloud.tools:jib-maven-plugin:3.1.1:dockerBuild
+      - mvn compile com.google.cloud.tools:jib-maven-plugin:3.1.1:dockerBuild
 #      - mvn instal
-      - mvn compile jib:build
       - echo Building the Docker image...
 #      - docker build -t $IMAGE_REPO_NAME:$IMAGE_TAG .
-      - docker tag $IMAGE_REPO_NAME:1 $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:1
+      - docker tag $IMAGE_REPO_NAME:1 $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:$IMAGE_TAG
   post_build:
     commands:
       - echo Build completed on `date`
       - echo Pushing the Docker image...
-      - docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:1
+      - docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:$IMAGE_TAG
 #artifacts:
 #  files:
 #    - target/onlineshop-1.jar
