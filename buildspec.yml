@@ -9,6 +9,8 @@ phases:
       - echo Logging in to Amazon ECR...
       - aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com
       - docker pull adoptopenjdk/openjdk11:alpine-jre
+      - docker tag adoptopenjdk/openjdk11:alpine-jre $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/openjdk11:alpine-jre
+
   build:
     commands:
       - echo Building the Docker image...
