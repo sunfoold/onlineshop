@@ -1,11 +1,13 @@
 package dev.temnikov.onlineshop.service;
 
+import com.amazonaws.xray.spring.aop.XRayEnabled;
 import dev.temnikov.onlineshop.domain.model.Product;
 import dev.temnikov.onlineshop.repository.ProductRepository;
 import java.util.Optional;
 import org.springframework.stereotype.Service;
 
 @Service
+@XRayEnabled
 public class ProductService {
 
     private final ProductRepository productRepository;
