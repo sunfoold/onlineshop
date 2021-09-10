@@ -1,6 +1,5 @@
 package dev.temnikov.onlineshop.web.rest;
 
-import com.amazonaws.xray.spring.aop.XRayEnabled;
 import dev.temnikov.onlineshop.domain.model.Product;
 import dev.temnikov.onlineshop.service.ProductService;
 import org.springframework.http.ResponseEntity;
@@ -14,7 +13,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/product/")
-@XRayEnabled
 public class ProductController {
 
     private final ProductService productService;
@@ -29,9 +27,9 @@ public class ProductController {
         return ResponseEntity.ok(productService.getProductById(productId));
     }
 
-    @PutMapping("{productId}/add")
+    @PutMapping("/add")
     @Transactional
-    public ResponseEntity<Product> putProductById(@PathVariable Long productId, @RequestBody Product product) {
-        return ResponseEntity.ok(productService.putProductById(productId, product));
+    public ResponseEntity<Product> putProductById( @RequestBody Product product) {
+        return ResponseEntity.ok(productService.putProductById(product));
     }
 }

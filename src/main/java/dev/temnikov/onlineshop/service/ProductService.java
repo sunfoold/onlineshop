@@ -1,13 +1,11 @@
 package dev.temnikov.onlineshop.service;
 
-import com.amazonaws.xray.spring.aop.XRayEnabled;
 import dev.temnikov.onlineshop.domain.model.Product;
 import dev.temnikov.onlineshop.repository.ProductRepository;
 import java.util.Optional;
 import org.springframework.stereotype.Service;
 
 @Service
-@XRayEnabled
 public class ProductService {
 
     private final ProductRepository productRepository;
@@ -21,16 +19,9 @@ public class ProductService {
         return optionalProductById.orElseThrow(() -> new RuntimeException("Product not found with id: " + productId));
     }
 
-    public Product putProductById(Long productId, Product product) {
-        Optional<Product> optionalProductById = productRepository.findById(productId);
-        if (optionalProductById.isEmpty()) {
-            product.setId(productId);
-            return productRepository.save(product);
-        }
-
-        Product product1 = optionalProductById.get();
-        product1.setTitle(product.getTitle());
-
-        return productRepository.save(product1);
+    public Product putProductById(Product product) {
+        return productRepository.save(product);
     }
+
 }
+
